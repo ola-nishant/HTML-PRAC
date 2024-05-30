@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Registration Form</title>
+    <style>
+        .error-message {
+            color: red;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <span id="nameError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="roll">Roll No:</label>
+                <input type="text" id="roll" name="roll">
+                <span id="rollError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span id="emailError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age">
+                <span id="ageError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+                <span id="genderError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" name="course">
+                    <option value="course1">Course 1</option>
+                    <option value="course2">Course 2</option>
+                    <option value="course3">Course 3</option>
+                </select>
+                <span id="courseError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address"></textarea>
+                <span id="addressError" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" name="photo">
+                <span id="photoError" class="error-message"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var roll = document.getElementById('roll').value;
+            var email = document.getElementById('email').value;
+            var age = document.getElementById('age').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var course = document.getElementById('course').value;
+            var address = document.getElementById('address').value;
+            var photo = document.getElementById('photo').value;
+
+            // Resetting previous error messages
+            document.querySelectorAll('.error-message').forEach(function (element) {
+                element.innerText = '';
+            });
+
+            var isValid = true;
+
+            if (name.trim() === '') {
+                document.getElementById('nameError').innerText = 'Please enter your name';
+                isValid = false;
+            }
+
+            if (roll.trim() === '') {
+                document.getElementById('rollError').innerText = 'Please enter your roll number';
+                isValid = false;
+            }
+
+            if (email.trim() === '') {
+                document.getElementById('emailError').innerText = 'Please enter your email';
+                isValid = false;
+            }
+
+            if (!gender) {
+                document.getElementById('genderError').innerText = 'Please select your gender';
+                isValid = false;
+            }
+
+            if (course === 'Choose Course') {
+                document.getElementById('courseError').innerText = 'Please select a course';
+                isValid = false;
+            }
+
+            if (address.trim() === '') {
+                document.getElementById('addressError').innerText = 'Please enter your address';
+                isValid = false;
+            }
+
+            if (photo.trim() === '') {
+                document.getElementById('photoError').innerText = 'Please upload a photo';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+            }
+        });
+    </script>
+</body>
+
+</html>

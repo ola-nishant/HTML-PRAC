@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+    <!-- External stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: blue;
+            /* Change color */
+            font-size: 36px;
+            /* Change font size */
+            font-family: Arial, sans-serif;
+            /* Change font family */
+        }
+
+        /* Internal Stylesheet */
+        body {
+            background-color: #f4f4f4;
+            /* Change background color */
+            color: #333;
+            /* Change text color */
+        }
+
+        h2 {
+            color: green;
+            /* Change heading color */
+        }
+
+        p {
+            font-size: 18px;
+            /* Change paragraph font size */
+        }
+
+        a {
+            text-decoration: none;
+            /* Remove underline from links */
+            color: #007bff;
+            /* Change link color */
+        }
+
+        /* Selectors and Combinators */
+        /* Class Selector */
+        .special-text {
+            font-weight: bold;
+        }
+
+        /* ID Selector */
+        #unique-heading {
+            color: red;
+        }
+
+        /* Descendant Selector */
+        ul li {
+            color: purple;
+        }
+
+        /* Child Selector */
+        table>tr>th {
+            background-color: lightgray;
+        }
+
+        /* Adjacent Sibling Selector */
+        h2+p {
+            font-style: italic;
+        }
+
+        /* Box Model */
+        .custom-box {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+
+        /* Floats and Clearing */
+        .float-left {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        /* Flexbox Layout */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+        }
+
+        /* CSS Transitions and Animations */
+        a:hover {
+            transition: color 0.3s ease-in-out;
+            color: #ff6347;
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(200px);
+            }
+        }
+
+        .animated-element {
+            animation: move 2s infinite alternate;
+        }
+        
+        .animation-sq{
+            width: 300px;
+            height: 300px;
+            background-color:#ff6666;
+            animation: modify 10s infinite alternate;
+            margin-top: 3rem;
+        }
+
+        @keyframes modify {
+            from{
+                border-radius: 0%;
+            }
+            
+            to{
+                border-radius: 50%;
+            }
+        }
+
+    </style>
+</head>
+
+<body class="container p-5">
+    
+    <!-- Inline Styles -->
+    <h1 style="color: red; font-size: 40px; font-family: 'Times New Roman', serif;">This is my website</h1>
+
+    <h2>Text Formatting:</h2>
+    <p>This is a <strong class="special-text">bold</strong> and <em>italic</em> text. Visit <a
+            href="https://www.example.com">Example Website</a>.</p>
+
+    <h2>Lists:</h2>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <ol>
+        <li>Step 1</li>
+        <li>Step 2</li>
+        <li>Step 3</li>
+    </ol>
+
+    <h2>Images:</h2>
+    <img src="https://images.unsplash.com/photo-1561816544-21ecbffa09a3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Placeholder Image" width="150" height="150">
+
+    <h2>Tables:</h2>
+    <table border="1">
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+        </tr>
+        <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+        </tr>
+        <tr>
+            <td>Data 7</td>
+            <td>Data 8</td>
+            <td>Data 9</td>
+        </tr>
+    </table>
+
+    <!-- Floats and Clearing -->
+    <div class="float-left custom-box">Float Left</div>
+    <div class="float-left custom-box">Float Left</div>
+    <div class="clear"></div>
+
+    <!-- Flexbox Layout -->
+    <div class="flex-container mt-4">
+        <div style="background-color: #ffcc00; width: 100px; height: 100px;">Flex Item 1</div>
+        <div style="background-color: #66cccc; width: 100px; height: 100px;">Flex Item 2</div>
+        <div style="background-color: #ff6666; width: 100px; height: 100px;">Flex Item 3</div>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="grid-container mt-4">
+        <div style="background-color: #ffcc00; width: 100px; height: 100px;">Grid Item 1</div>
+        <div style="background-color: #66cccc; width: 100px; height: 100px;">Grid Item 2</div>
+        <div style="background-color: #ff6666; width: 100px; height: 100px;">Grid Item 3</div>
+    </div>
+
+    <!-- Responsive Design -->
+    <p>This is a paragraph.</p>
+
+    <!-- CSS Transitions and Animations -->
+    <a href="#" class="animated-element">Animated Link</a>
+    
+    <div class="animation-sq"></div>
+
+</body>
+
+</html>

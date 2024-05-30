@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Components</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .main_con {
+            padding: 2rem;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Styles for Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .thumbnail {
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .main-image {
+            height: 600px;
+        }
+
+        /* Styles for Accordion FAQ */
+        .faq-item {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .faq-question {
+            background-color: #f2f2f2;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+        }
+
+        /* Styles for Drag-and-Drop Task Board */
+        .task-board {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .task-list {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            min-height: 100px;
+        }
+
+        .task {
+            background-color: #f9f9f9;
+            padding: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        h4 {
+            margin-top: 50px;
+            margin-bottom: 0;
+            padding-bottom: 5px;
+        }
+
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+        }
+
+        .container {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ffcc00;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 120px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: max-content;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ffcc00;
+            color: #333;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Practical 5</h1>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li class="dropdown">
+                    <a href="#">Services</a>
+                    <div class="dropdown-content">
+                        <a href="#">Service 1</a>
+                        <a href="#">Service 2</a>
+                        <a href="#">Service 3</a>
+                    </div>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main_con">
+        <!-- Image Gallery -->
+        <h4>Gallery</h4>
+        <img class="main-image" src="https://images.unsplash.com/photo-1501696461415-6bd6660c6742" alt="Main Image">
+        <div class="image-gallery">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Thumbnail 2">
+            <img class="thumbnail"
+                src="https://plus.unsplash.com/premium_photo-1669885054268-cbd716cb8b52?q=80&w=2113&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Thumbnail 3">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e" alt="Thumbnail 4">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af" alt="Thumbnail 5">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1501696461415-6bd6660c6742" alt="Thumbnail 6">
+        </div>
+
+        <!-- FAQ Section -->
+        <h4>FAQ</h4>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Question 1</p>
+                <p>↓</p>
+            </div>
+            <div class="faq-answer">Answer 1</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Question 2</p>
+                <p>↓</p>
+            </div>
+            <div class="faq-answer">Answer 2</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <p>Question 3</p>
+                <p>↓</p>
+            </div>
+            <div class="faq-answer">Answer 3</div>
+        </div>
+
+        <!-- Drag-and-Drop Task Board -->
+        <h4>Task Board</h4>
+        <div class="task-board">
+            <div class="task-list" id="todo">
+                <div class="task" draggable="true">Task 1</div>
+                <div class="task" draggable="true">Task 2</div>
+            </div>
+            <div class="task-list" id="in-progress">
+                <div class="task" draggable="true">Task 3</div>
+            </div>
+            <div class="task-list" id="done">
+                <div class="task" draggable="true">Task 4</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // JavaScript for Dropdown Menu
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseover', () => {
+            dropdown.querySelector('.dropdown-content').style.display = 'block';
+        });
+        dropdown.addEventListener('mouseout', () => {
+            dropdown.querySelector('.dropdown-content').style.display = 'none';
+        });
+    });
+
+    // JavaScript for Image Gallery
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.querySelector('.main-image');
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', () => {
+            mainImage.src = thumbnail.src;
+        });
+    });
+
+    // JavaScript for Accordion FAQ
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                faqQuestions.forEach(q => q.nextElementSibling.style.display = 'none');
+                answer.style.display = 'block';
+            }
+        });
+    });
+
+    // JavaScript for Drag-and-Drop Task Board
+    const tasks = document.querySelectorAll('.task');
+    const taskLists = document.querySelectorAll('.task-list');
+    let draggedTask = null;
+
+    tasks.forEach(task => {
+        task.addEventListener('dragstart', () => {
+            draggedTask = task;
+        });
+    });
+
+    taskLists.forEach(list => {
+        list.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+        list.addEventListener('drop', e => {
+            e.preventDefault();
+            if (draggedTask) {
+                list.appendChild(draggedTask);
+                draggedTask = null;
+            }
+        });
+    });
+</script>
+
+</html>

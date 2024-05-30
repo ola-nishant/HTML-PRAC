@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #countdown {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            display: flex;
+            gap: 5px;
+        }
+
+        #datetime {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="countdown"></div>
+    <input type="datetime-local" id="datetime">
+    <button onclick="startCountdown()">Start Countdown</button>
+
+    <script>
+        var countdownInterval;
+
+        function startCountdown() {
+            clearInterval(countdownInterval);
+
+            var targetDate = new Date(document.getElementById('datetime').value).getTime();
+
+            countdownInterval = setInterval(function () {
+                var now = new Date().getTime();
+                var distance = targetDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+
+</html>
